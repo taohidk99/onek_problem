@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h1>{{ course.name }}</h1>
+    <img src="{{ course.image.url }}" alt="{{ course.name }}" class="img-fluid" style="height: 300px; object-fit: cover;">
+    <p><strong>Price:</strong> {{ course.price }}</p>
+    <p><strong>Description:</strong> {{ course.description }}</p>
+    {% if course.video %}
+        <p><strong>Video:</strong> <a href="{{ course.video.url }}" target="_blank">Watch Now</a></p>
+    {% endif %}
+    {% if course.ebook %}
+        <p><strong>eBook:</strong> <a href="{{ course.ebook.url }}" download>Download eBook</a></p>
+    {% endif %}
+    <a href="{% url 'add_to_cart' course.id %}" class="btn btn-primary">Add to Cart</a>
+
+</div>
+{% endblock %}
+

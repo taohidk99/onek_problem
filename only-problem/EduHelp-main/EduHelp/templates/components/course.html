@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-4">
+{% if user.is_authenticated and user.is_superuser %}
+
+        <a href="{% url 'add_course' %}" class="btn btn-primary">Add course</a>
+    {% endif %}
+        <!-- Product Display Section -->
+        <div class="col-md-9 offset-md-3">
+            <div class="row g-4">
+                {% for item in courses %}
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="{{ item.image.url }}" alt="{{ item.name }}" class="card-img-top" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ item.name }}</h5>
+                                <p class="card-text">{{ item.description }}</p>
+                                <p class="card-text">{{ item.price }}</p>
+                                <a href="{% url 'course_detail' item.id %}" class="btn btn-primary">View Details</a>
+                                <a href="{% url 'add_to_cart' item.id %}" class="btn btn-danger mx-2" type="button">Add to Cart</a>
+                                {% if user.is_authenticated and user.is_superuser %}
+                                <a href="{% url 'update_course' item.id %}" class="btn btn-primary">Edit course</a>
+                                <a href="{% url 'delete_course' item.id %}" class="btn btn-primary">delete course</a>
+                            {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

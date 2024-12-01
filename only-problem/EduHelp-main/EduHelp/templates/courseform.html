@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h1>Add A Course</h1>
+<form method="post"  enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+
+  <!-- Display error messages if any field is invalid -->
+  {% if form.errors %}
+    <div class="error-messages">
+      {% for field in form %}
+        {% for error in field.errors %}
+          <p>{{ field.label }}: {{ error }}</p>
+        {% endfor %}
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <button type="submit">ok</button>
+</form>
+{% endblock %}

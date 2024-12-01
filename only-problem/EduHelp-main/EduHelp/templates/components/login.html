@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+    <section>
+        <form action="{% url 'login' %}" method="post" style="max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+            {% csrf_token %}
+            <div class="container" style="text-align: center; font-family: Arial, sans-serif;">
+                <h3 style="margin-bottom: 20px; font-size: 24px; color: #333;">Login Here</h3>
+
+                <label for="username" style="display: block; text-align: left; margin-bottom: 5px; font-weight: bold;">Username</label>
+                <input type="text" placeholder="Enter Username" id="username" name="username" style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;">
+
+                <label for="password" style="display: block; text-align: left; margin-bottom: 5px; font-weight: bold;">Password</label>
+                <input type="password" placeholder="Enter Password" id="password" name="password" style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;">
+
+                <button type="submit" style="width: 100%; padding: 10px; background-color: #007BFF; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">Log In</button>
+
+                <div class="social" style="margin-top: 15px; display: flex; justify-content: space-between;">
+                    <div class="go">
+                        <a href="{% url 'register' %}" style="color: #007BFF; text-decoration: none;">Register</a>
+                    </div>
+                    <div class="fb">
+                        <a href="#" style="color: #007BFF; text-decoration: none;">Forget password</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+</body>
+
+{% endblock %}

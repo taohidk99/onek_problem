@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Hero Section -->
+<div class="container-fluid text-center p-5 bg-light">
+    <h1 style="font-size: 2.5rem; font-weight: bold;">Welcome to Online Courses</h1>
+    <p style="font-size: 1.25rem; margin-top: 15px;">Learn new skills online from the best instructors worldwide.</p>
+    <a href="{% url 'course' %}" class="btn btn-primary mt-3" style="padding: 10px 20px; font-size: 1rem;">Explore Courses</a>
+</div>
+
+<!-- Popular Courses Section -->
+<div class="container mt-5">
+    <h2 class="text-center mb-4" style="font-size: 2rem; font-weight: bold;">Popular Courses</h2>
+    <div class="row justify-content-center">
+        {% for course in popular_courses %}
+        <div class="col-md-3 text-center p-3 border rounded" style="margin: 10px;">
+            <img src="{{ course.image.url }}" class="img-fluid mb-3" alt="{{ course.name }}" style="height: 150px;">
+            <h5>{{ course.name }}</h5>
+            <p>{{ course.description|truncatewords:10 }}</p>
+            <p style="font-weight: bold;">${{ course.price }}</p>
+            <a href="{% url 'course_detail' course.id %}" class="btn btn-success" style="padding: 8px 15px;">View Details</a>
+        </div>
+        {% empty %}
+        <p class="text-center">No courses available.</p>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- All Courses Section -->
+<div class="container mt-5">
+    <h2 class="text-center mb-4" style="font-size: 2rem; font-weight: bold;">All Courses</h2>
+    <div class="row">
+        {% for course in all_courses %}
+        <div class="col-md-3 text-center p-3 border rounded" style="margin: 10px;">
+            <img src="{{ course.image.url }}" class="img-fluid mb-3" alt="{{ course.name }}" style="height: 150px;">
+            <h5>{{ course.name }}</h5>
+            <p>{{ course.description|truncatewords:10 }}</p>
+            <p style="font-weight: bold;">${{ course.price }}</p>
+            <a href="{% url 'course_detail' course.id %}" class="btn btn-primary" style="padding: 8px 15px;">View Details</a>
+        </div>
+        {% empty %}
+        <p class="text-center">No courses available.</p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

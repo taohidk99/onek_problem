@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="container-fluid text-center p-5 bg-light">
+    <h1 style="font-size: 3rem; font-weight: bold;">Welcome to EduHelp</h1>
+    <p style="font-size: 1.25rem; margin-top: 15px;">Your Gateway to Learning and Skill Development</p>
+    <div class="mt-4">
+        <a href="{% url 'login' %}" class="btn btn-primary" style="padding: 10px 20px; font-size: 1.2rem;">Login</a>
+       
+    </div>
+</div>
+
+<!-- About Section -->
+<div class="container mt-5">
+    <h2 class="text-center mb-4" style="font-size: 2rem; font-weight: bold;">About EduHelp</h2>
+    <p class="text-center" style="font-size: 1.2rem;">
+        EduHelp is a platform designed to provide top-notch courses taught by industry experts. Start your learning journey with us today!
+    </p>
+</div>
+
+<!-- Features Section -->
+<div class="container mt-5">
+    <h2 class="text-center mb-4" style="font-size: 2rem; font-weight: bold;">Why Choose EduHelp?</h2>
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <img src="{% static 'images/feature1.png' %}" alt="Feature 1" class="img-fluid mb-3" style="height: 100px;">
+            <h5>Expert Instructors</h5>
+            <p>Learn from the best professionals in the field.</p>
+        </div>
+        <div class="col-md-4 text-center">
+            <img src="{% static 'images/feature2.png' %}" alt="Feature 2" class="img-fluid mb-3" style="height: 100px;">
+            <h5>Flexible Learning</h5>
+            <p>Access courses anytime, anywhere.</p>
+        </div>
+        <div class="col-md-4 text-center">
+            <img src="{% static 'images/feature3.png' %}" alt="Feature 3" class="img-fluid mb-3" style="height: 100px;">
+            <h5>Affordable Prices</h5>
+            <p>Quality education at prices you'll love.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
